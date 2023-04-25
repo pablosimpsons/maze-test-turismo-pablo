@@ -492,11 +492,11 @@
 
               // Check if a player object already exists
 
-             if (typeof player !== "undefined") {
-              player.reset();
-              return;
-             }
-             player = new Player();
+            // if (typeof player !== "undefined") {
+            //  player.reset();
+            //  return;
+            // }
+            // player = new Player();
           
 
               $.when(init()).then(animate());
