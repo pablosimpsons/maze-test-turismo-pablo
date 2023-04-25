@@ -338,7 +338,11 @@
               // Check if player has won
               if (checkWin()) {
 
-    
+         // if (typeof player !== "undefined") {
+        //      player.reset();
+          //    return;
+         // }
+          //player = new Player();
                   console.log("you win :D ");
                   setTimeout(() => {
                       // confettiRunning = true; 
@@ -348,20 +352,14 @@
                       audioWin.loop = false;
                       audioWin.play();
                       document.querySelector('.laberinto.success').classList.add("active");
-                      // init()
-                            if (typeof player !== "undefined") {
-              player.reset();
-              return;
-          }
-        //  player = new Player();
-                  }, 500);
+                                      init(); 
+cancelAnimation()
+startAnimation()
+                  }, 500); 
 
-             
-          
-  
                   cancelAnimationFrame(animationId);
               } else {
-                  animationId = requestAnimationFrame(animate);
+                   animationId = requestAnimationFrame(animate);
               }
           }
 
@@ -479,6 +477,8 @@
               const canvasLab = document.getElementById(game + "mazeCanvas");
           }
           //////////////////////////////////////////////////////////////////////////////////////
+          let animateCalled = false;
+
           function initMaze() {
 
               document.querySelector('.laberinto.success').classList.remove("active");
@@ -492,18 +492,21 @@
 
               // Check if a player object already exists
 
-            // if (typeof player !== "undefined") {
-            //  player.reset();
-            //  return;
-            // }
-            // player = new Player();
-          
+         // if (typeof player !== "undefined") {
+          //    player.reset();
+          //    return;
+          //}
+         // player = new Player();
 
-              $.when(init()).then(animate());
+               init(); 
+               if (!animateCalled) {
+    animateCalled = true;
+    animate();
+  }
               // cancelAnimation(); 
               // $(".welcome").hide();
               // Create a new player object
-     
+
               //setTimeout(() => {startAnimation(); }, 1500);
               $("#mazeCanvas").show();
               console.log("hi");
